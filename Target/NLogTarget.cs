@@ -45,7 +45,7 @@ namespace Gelf4NLog.Target
             var jsonObject = Converter.GetGelfJson(logEvent, Facility);
             if (jsonObject == null) return;
 
-            if (string.IsNullOrWhiteSpace(_hostIp))
+            if (string.IsNullOrEmpty(_hostIp))
             {
                 _hostIp = HostIp.Render(logEvent);
                 _port = int.Parse(HostPort.Render(logEvent));

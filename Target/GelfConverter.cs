@@ -60,19 +60,19 @@ namespace Gelf4NLog.Target
             //Add any other interesting data to LogEventInfo properties
             logEventInfo.Properties.Add("loggerName", logEventInfo.LoggerName);
 
-            if (!string.IsNullOrWhiteSpace(facility))
+            if (!string.IsNullOrEmpty(facility))
             {
                 logEventInfo.Properties.Add("facility", facility);
             }
 
             var line = GetLine(logEventInfo);
-            if (!string.IsNullOrWhiteSpace(line))
+            if (!string.IsNullOrEmpty(line))
             {
                 logEventInfo.Properties.Add("line", line);
             }
 
             var file = GetFile(logEventInfo);
-            if (!string.IsNullOrWhiteSpace(file))
+            if (!string.IsNullOrEmpty(file))
             {
                 logEventInfo.Properties.Add("file", file);
             }
@@ -205,7 +205,7 @@ namespace Gelf4NLog.Target
             {
                 message.Append(currentException.Message);
 
-                if (!string.IsNullOrWhiteSpace(currentException.StackTrace))
+                if (!string.IsNullOrEmpty(currentException.StackTrace))
                 {
                     stacktrace.AppendLine(currentException.StackTrace);
                 }
